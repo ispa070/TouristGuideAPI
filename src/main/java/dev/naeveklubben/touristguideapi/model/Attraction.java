@@ -1,10 +1,10 @@
 package dev.naeveklubben.touristguideapi.model;
 
-public class TouristAttraction {
+public class Attraction {
     private String name;
     private String description;
 
-    public TouristAttraction(String name, String description){
+    public Attraction(String name, String description){
         this.name = name;
         this.description = description;
     }

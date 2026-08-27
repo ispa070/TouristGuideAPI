@@ -1,23 +1,23 @@
 package dev.naeveklubben.touristguideapi.repository;
 
-import dev.naeveklubben.touristguideapi.model.TouristAttraction;
+import dev.naeveklubben.touristguideapi.model.Attraction;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class TouristRepository {
-    private final List<TouristAttraction> attractions = new ArrayList<>();
+public class AttractionRepository {
+    private final List<Attraction> attractions = new ArrayList<>();
     private String attractionName;
 
 
-    public List<TouristAttraction> getAllAttractions(){
+    public List<Attraction> getAllAttractions(){
         return attractions;
     }
 
-    public TouristAttraction findAttractionByName(String name){
-        for(TouristAttraction attraction : attractions){
+    public Attraction findAttractionByName(String name){
+        for(Attraction attraction : attractions){
             if(attraction.getName().equals(name)){
                 return attraction;
             }
