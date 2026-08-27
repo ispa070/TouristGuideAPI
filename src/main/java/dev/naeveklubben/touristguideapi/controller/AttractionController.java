@@ -1,13 +1,12 @@
 package dev.naeveklubben.touristguideapi.controller;
 
 import dev.naeveklubben.touristguideapi.model.Attraction;
+import dev.naeveklubben.touristguideapi.repository.AttractionRepository;
 import dev.naeveklubben.touristguideapi.service.AttractionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,9 +15,11 @@ import java.util.List;
 
 public class AttractionController {
     private final AttractionService attractionService;
+    private final AttractionRepository attractionRepository;
 
-    public AttractionController(AttractionService attractionService){
+    public AttractionController(AttractionService attractionService, AttractionRepository attractionRepository){
         this.attractionService = attractionService;
+        this.attractionRepository = attractionRepository;
     }
 
     @GetMapping()
@@ -35,6 +36,12 @@ public class AttractionController {
         } else {
             return new ResponseEntity<>(attraction, HttpStatus.OK);
         }
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Attraction> createAttraction(@RequestBody Attraction attraction){
+        attractionRepository.addAttraction(attraction);
+        return new ResponseEntity<>(attraction, HttpStatus.CREATED);
     }
 
 }

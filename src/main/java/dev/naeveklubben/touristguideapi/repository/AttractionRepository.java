@@ -25,6 +25,9 @@ public class AttractionRepository {
         return null;
     }
 
+    public void addAttraction(Attraction attraction){
+        attractions.add(attraction);
+    }
 
 
 
