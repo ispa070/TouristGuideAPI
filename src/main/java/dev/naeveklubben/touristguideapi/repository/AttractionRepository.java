@@ -9,26 +9,26 @@ import java.util.List;
 @Repository
 public class AttractionRepository {
     private final List<Attraction> attractions = new ArrayList<>();
-    private String attractionName;
 
+    public AttractionRepository() {
+        attractions.add(new Attraction("Tivoli", "Forlystelsespark midt i København centrum"));
+        attractions.add(new Attraction("Nyhavn", "Farverig kanal med historiske huse og skibe"));
+    }
 
-    public List<Attraction> getAllAttractions(){
+    public List<Attraction> getAllAttractions() {
         return attractions;
     }
 
-    public Attraction findAttractionByName(String name){
-        for(Attraction attraction : attractions){
-            if(attraction.getName().equals(name)){
+    public Attraction findAttractionByName(String name) {
+        for (Attraction attraction : attractions) {
+            if (attraction.getName().equals(name)) {
                 return attraction;
             }
         }
         return null;
     }
 
-    public void addAttraction(Attraction attraction){
+    public void addAttraction(Attraction attraction) {
         attractions.add(attraction);
     }
-
-
-
 }

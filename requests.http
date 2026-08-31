@@ -1,0 +1,14 @@
+### Get all attractions
+GET http://localhost:8080/attractions
+
+### Get one attraction by name
+GET http://localhost:8080/attractions/Tivoli
+
+### Add an attraction
+POST http://localhost:8080/attractions/add
+Content-Type: application/json
+
+{
+  "name": "Rundetaarn",
+  "description": "Historisk observatorietårn i hjertet af København"
+}

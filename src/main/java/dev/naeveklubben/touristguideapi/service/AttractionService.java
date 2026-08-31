@@ -19,8 +19,11 @@ public class AttractionService {
     }
 
     public Attraction findTouristAttractionByName(String name) {
-        Attraction attraction = repository.findAttractionByName(name);
-        return attraction;
+        return repository.findAttractionByName(name);
     }
 
+    public Attraction createAttraction(Attraction attraction) {
+        repository.addAttraction(attraction);
+        return attraction;
+    }
 }
