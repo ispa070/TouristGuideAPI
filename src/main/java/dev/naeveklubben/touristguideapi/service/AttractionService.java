@@ -26,4 +26,14 @@ public class AttractionService {
         repository.addAttraction(attraction);
         return attraction;
     }
+
+    public Attraction updateAttraction(String name, Attraction attraction){
+        return repository.updateAttraction(name, attraction);
+    }
+
+    public Attraction deleteAttraction(String name){
+        return repository.deleteAttraction(name);
+    }
+
+
 }

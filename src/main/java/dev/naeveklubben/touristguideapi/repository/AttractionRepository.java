@@ -31,4 +31,30 @@ public class AttractionRepository {
     public void addAttraction(Attraction attraction) {
         attractions.add(attraction);
     }
+
+    public Attraction updateAttraction(String name, Attraction updated){
+        Attraction existing = findAttractionByName(name);
+
+        if (existing == null) {
+            return null;
+        }
+
+        existing.setName(updated.getName());
+        existing.setDescription(updated.getDescription());
+
+        return existing;
+    }
+
+
+    public Attraction deleteAttraction(String name) {
+        Attraction attraction = findAttractionByName(name);
+
+        if (attraction == null){
+            return null;
+        }
+
+        attractions.remove(attraction);
+
+        return attraction;
+    }
 }
