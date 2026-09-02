@@ -20,7 +20,7 @@ public class AttractionController {
 
     @GetMapping()
     public ResponseEntity<List<Attraction>> getAttraction() {
-        List<Attraction> attractions = attractionService.getAttractions();
+        List<Attraction>     attractions = attractionService.getAttractions();
         return new ResponseEntity<>(attractions, HttpStatus.OK);
     }
 
