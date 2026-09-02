@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 5px;
@@ -15,6 +16,19 @@ body {
     font-family: var(--font-main);
     line-height: 1.5;
 }
+
+header {
+    background-image: url("/images/naeveklubbens-turistguide-banner.webp");
+    background-size: cover;
+    background-position: center;
+    font-family: var(--font-main);
+    color: white;
+    font-size: 25px;
+    text-align: left;
+    text-shadow: 3px 3px 5px black;
+    padding: 80px 20px;
+}
+
 
 ul {
     list-style-type: none;
