@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: cornsilk;
+    --font-main: "Helvetica Neue", sans-serif;
+    --spacing: 16px;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: var(--font-main);
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: crimson;
+}
+
+ul li {
+    float: left;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: #111111;
+}
