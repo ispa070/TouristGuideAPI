@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>TouristGuideAPI</title>
+    <title>Næveklubbens turistguide</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/naeve.png">
 </head>
 
 <body>
@@ -12,43 +13,66 @@
 <h1>Næveklubbens turistguide</h1>
 </header>
 
-<nav>
+<nav class="nav-bar">
     <ul>
-        <li><a href="/attractions">Attractions</a></li>
-            <li><a href="/attractions/Nyhavn">Nyhavn</a></li>
-        <li><a href="/recommendations">Our recommendations</a></li>
-        <li><a href="/about">About us</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/index.html">Forside</a></li>
+        <li><a href="/attractions">Attraktioner</a></li> <!-- viser .json kun -->
+            <li><a href="/attractions/Nyhavn">Nyhavn</a></li> <!-- viser .json kun -->
+        <li><a href="/recommendations.html">Anbefalinger</a></li>
+        <li><a href="/about.html">Om Næveklubben</a></li>
+        <li><a href="/contact.html">Kontakt Næveklubben</a></li>
     </ul>
 </nav>
 
 <main>
-    <section>
-        <h2>Velkommen til Næveklubben</h2>
-        <p>
-            Vi er en lille guide til dig, der gerne vil opleve byen som en lokal og ikke som en turist. Her finder du de steder, vi selv vender tilbage til: værtshuse med en historie, gader der er værd at gå ned ad, og udsigter der ikke står i alle rejsebøger.
-            Vælg en by i menuen og se, hvad vi har samlet. Ingen billetkø, ingen ventetid — bare et par gode anbefalinger fra folk, der har brugt for meget tid på at lede efter dem.
-        </p>
+        <h2>Velkommen til Næveklubbens turistguide</h2>
+    <img src="images/index-naeveklubben-fade.png" alt="Næveklubben">
+    <h3>Kort og godt</h3>
+        <p>Vi er en lille guide til dig, der gerne vil opleve byen som en <em>lokal</em> og <i>ikke</i> som en
+            turist. Her finder du de steder, vi i <strong>Næveklubben</strong>, selv vender tilbage til: værtshuse med en historie, gader der er værd at gå ned ad, og udsigter der ikke står i alle rejsebøger.
+            Vælg en by i menuen og se, hvad vi har samlet. Ingen billetkø, ingen ventetid — bare et par gode anbefalinger fra folk, der har brugt for meget tid på at lede efter dem.</p>
+        <p>Du kan læse mere om hvem vi er <a href="/about.html">her</a>.</p>
+    <h2>Nyttige links</h2>
+    <h3>Vi kan meget, men...</h3>
+    <p>Vi har alligevel valgt at samle en håndfuld nyttige links fra eksterne partnere, der kan hjælpe dig med at
+        planlægge din tur.</p>
+        <ul>
+            <li><a href="http://visitdenmark.dk">VisitDenmark - Turistguide med meget bred appel</a></li>
+            <li><a href="http://rejseplanen.dk">Rejseplanen - Perfekt, hvis du har tænkt dig at benytte
+                offentlig transport</a></li>
+        </ul>
 
-        <h2>Nyttige links</h2>
-            <a href="http://rejseplanen.dk">Rejseplanen - Offentlig transport guide</a>
+    <h2>Omtale</h2>
+    <h3>Hvad vores kunder siger</h3>
+    <p>Her er en lille samling af udsagn fra vores (svært) tilfredse kunder! </p>
+        <blockquote>
+            <p>"
+                <cite>Jeg havde aldrig troet, at jeg skulle opleve København fuldstændig som en lokal, men
+                    Næveklubbens anbefalinger var sublime. Jeg undgik alle de klassiske turistfælder og fik øjnene op
+                    for alle de små perler i byen, der gjorde mit ophold uforglemmeligt!</cite>
+                " -- DefinitelyNotFrederikX
+            </p>
+        </blockquote>
 
-    </section>
+        <blockquote>
+            <p>"
+                <cite>Guiden gav mig præcis den slags København, jeg ledte efter: mindre turistbus, mere ‘hvordan i alverden fandt vi det her sted?’. Det føltes næsten ulovligt lokalt.</cite>
+                " -- LarsLøkkeHjulet
+            </p>
+        </blockquote>
 
-    <footer>
-        <h3>Kontakt</h3>
-        <address>
-            Næveklubben<br>
-            Guldbergsgade 29N<br>
-            2200 København N<br>
-            <a href="mailto:kontakt@naeveklubben.dk">kontakt@naeveklubben.dk</a><br>
-            <a href="tel:+4512345678">+45 12 34 56 78</a>
-        </address>
-        <p>&copy; 2026 Næveklubben</p>
-    </footer>
+        <blockquote>
+            <p>"
+                <cite>Jeg kom for kanalrundfarten, men blev for de små steder, som ingen på TikTok havde fortalt mig om endnu. Det er næsten imponerende.</cite>
+                " -- MargretheDenAndenSide
+            </p>
+        </blockquote>
 
 </main>
 
+<footer>
+    <p>&copy; 2026 Næveklubben</p>
+</footer>
 
 </body>
 
