@@ -181,26 +181,3 @@ footer a {
 footer a:hover {
     color: darkred;
 }
-
-/* Tilpasning til mindre skærme */
-@media (max-width: 600px) {
-    header {
-        padding: 50px 20px;
-    }
-
-    header h1 {
-        font-size: 30px;
-    }
-
-    .nav-bar ul {
-        flex-direction: column;
-    }
-
-    .nav-bar a {
-        text-align: left;
-    }
-
-    main {
-        padding: 24px 18px;
-    }
-}
