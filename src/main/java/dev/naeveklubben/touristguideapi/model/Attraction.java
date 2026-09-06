@@ -1,14 +1,18 @@
 package dev.naeveklubben.touristguideapi.model;
 
 public class Attraction {
+
+    //Stores the name and description of an attraction
     private String name;
     private String description;
 
+    //Constructor used when creating a new Attraction object
     public Attraction(String name, String description){
         this.name = name;
         this.description = description;
     }
 
+    //Getters to return values of the fields
     public String getName(){
         return name;
     }
@@ -17,6 +21,7 @@ public class Attraction {
         return description;
     }
 
+    //Setters to update the attraction
     public void setName(String name) {
         this.name = name;
     }
