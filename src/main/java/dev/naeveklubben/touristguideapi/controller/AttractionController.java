@@ -25,6 +25,7 @@ public class AttractionController {
     }
 
     //Returns all attractions
+    //http://localhost:8080/attractions
     @GetMapping()
     public ResponseEntity<List<Attraction>> getAttraction() {
         List<Attraction>attractions = attractionService.getAttractions();
@@ -32,6 +33,7 @@ public class AttractionController {
     }
 
     //Finds an attraction using the name from the URL
+    //http://localhost:8080/attractions/{name}
     @GetMapping("{name}")
     public ResponseEntity<Attraction> getAttractionByName(@PathVariable String name) {
         Attraction attraction = attractionService.findTouristAttractionByName(name);
@@ -43,6 +45,7 @@ public class AttractionController {
     }
 
     //Creates a new attraction
+    //http://localhost:8080/attractions/add
     @PostMapping("/add")
     public ResponseEntity<Attraction> createAttraction(@RequestBody Attraction attraction) {
 
@@ -54,6 +57,7 @@ public class AttractionController {
 
 
     //Updates an existing attraction
+    //http://localhost:8080/attractions/update/{name}
     @PutMapping("/update/{name}")
     public ResponseEntity<Attraction> updateAttraction(@PathVariable String name, @RequestBody Attraction attraction) {
         Attraction updated = attractionService.updateAttraction(name, attraction);
@@ -66,6 +70,7 @@ public class AttractionController {
     }
 
     //Deletes an attraction
+    //http://localhost:8080/attractions/delete/{name}
     @DeleteMapping("/delete/{name}")
     public ResponseEntity<Attraction> deleteAttraction(@PathVariable String name) {
         Attraction deleted = attractionService.deleteAttraction(name);
