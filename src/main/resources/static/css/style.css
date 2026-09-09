@@ -46,6 +46,29 @@ header h1 {
     margin: 0;
     font-size: 65px;
 }
+/* Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border-top: 1px solid white;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid crimson;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+thead th {
+    background-color: var(--accent-color);
+    color: white;
+}
+
 
 /* Navigation */
 .nav-bar {
