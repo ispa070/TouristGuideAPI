@@ -38,12 +38,14 @@
     <tr th:each="attraction : ${attractions}">
       <td th:text="${attraction.name}"></td>
       <td th:text="${attraction.description}"></td>
-      <td>By</td>
-      <td>Tags</td>
+      <td th:text="${attraction.city.getDescription}"></td>
+      <td th:text="${attraction.tag.getDescription}"></td>
     </tr>
     </tbody>
   </table>
+
   <button>Tilføj Attraktion</button>
+
 </main>
 
 <footer>
