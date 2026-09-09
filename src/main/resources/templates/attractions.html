@@ -24,21 +24,26 @@
 </nav>
 
 <main>
-  <h2>Turistattraktioner:</h2>
+  <h2>Turistattraktioner</h2>
   <table>
     <thead>
     <tr>
       <th>Navn</th>
       <th>Beskrivelse</th>
+      <th>By</th>
+      <th>Tags</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="attraction : ${attractions}">
       <td th:text="${attraction.name}"></td>
       <td th:text="${attraction.description}"></td>
+      <td>By</td>
+      <td>Tags</td>
     </tr>
     </tbody>
   </table>
+  <button>Tilføj Attraktion</button>
 </main>
 
 <footer>
