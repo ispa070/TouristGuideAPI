@@ -1,6 +1,7 @@
 package dev.naeveklubben.touristguideapi.service;
 
 import dev.naeveklubben.touristguideapi.model.Attraction;
+import dev.naeveklubben.touristguideapi.model.Tag;
 import dev.naeveklubben.touristguideapi.repository.AttractionRepository;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +44,10 @@ public class AttractionService {
         return repository.deleteAttraction(name);
     }
 
+    //Gets the tags of one attraction, found by name
+    public List<Tag> getTags(String name) {
+        Attraction attraction = repository.findAttractionByName(name);
+        return attraction == null ? null : attraction.getTags();
+    }
 
 }

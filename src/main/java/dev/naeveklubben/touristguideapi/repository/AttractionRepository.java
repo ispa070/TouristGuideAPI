@@ -6,6 +6,7 @@ import dev.naeveklubben.touristguideapi.model.Tag;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -15,8 +16,10 @@ public class AttractionRepository {
 
     public AttractionRepository() {
         //Starting data when the repository is created
-        attractions.add(new Attraction("Tivoli", "Forlystelsespark midt i København centrum", City.KØBENHAVN, Tag.FORLYSTELSESPARK));
-        attractions.add(new Attraction("Nyhavn", "Farverig kanal med historiske huse og skibe",City.KØBENHAVN, Tag.GRATIS));
+        attractions.add(new Attraction("Den Lille Havfrue", "Røvsyg og mega lille, spild af tid", City.KØBENHAVN,
+                List.of(Tag.GRATIS)));
+        attractions.add(new Attraction("Tivoli", "Forlystelsespark midt i København centrum", City.KØBENHAVN,
+                List.of(Tag.FORLYSTELSESPARK)));
     }
 
     //Returns all attractions
@@ -68,4 +71,8 @@ public class AttractionRepository {
 
         return attraction;
     }
+
+    //public Tag showTag(String name) {
+
+
 }

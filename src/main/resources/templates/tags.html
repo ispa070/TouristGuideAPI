@@ -2,7 +2,7 @@
 <html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Attraktioner</title>
+  <title>Tags</title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="icon" type="image/x-icon" th:href="@{/images/naeve.png}">
 </head>
@@ -10,7 +10,7 @@
 <body>
 
 <header>
-  <h1>Næveklubbens turistguide</h1>
+  <h1>Tags</h1>
 </header>
 
 <nav class="nav-bar">
@@ -24,31 +24,21 @@
 </nav>
 
 <main>
-  <h2>Turistattraktioner</h2>
-  <table >
+  <h2>Tags for <span th:text="${attractionName}"></span></h2>
+  <table>
     <thead>
     <tr>
-      <th>Navn</th>
-      <th>Beskrivelse</th>
-      <th>By</th>
       <th>Tags</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="attraction : ${attractions}">
-      <td th:text="${attraction.name}"></td>
-      <td th:text="${attraction.description}"></td>
-      <td th:text="${attraction.city.description}"></td>
-      <td>
-        <form th:action="@{/attractions/{name}/tags(name=${attraction.name})}" method="get">
-          <button type="submit">Tags</button>
-        </form>
-      </td>
+    <tr th:each="tag : ${tags}">
+      <td th:text="${tag.description}"></td>
     </tr>
     </tbody>
   </table>
 
-  <button>Tilføj Attraktion</button>
+
 
 </main>
 

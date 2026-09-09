@@ -1,19 +1,22 @@
 package dev.naeveklubben.touristguideapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Attraction {
 
     //Stores the name and description of an attraction
     private String name;
     private String description;
     private City city;
-    private Tag tag;
+    private List<Tag> tags = new ArrayList<>();
 
     //Constructor used when creating a new Attraction object
-    public Attraction(String name, String description, City city, Tag tag){
+    public Attraction(String name, String description, City city, List<Tag> tags){
         this.name = name;
         this.description = description;
         this.city = city;
-        this.tag =tag;
+        this.tags = tags;
     }
 
     //Getters to return values of the fields
@@ -42,12 +45,12 @@ public class Attraction {
         this.city = city;
     }
 
-    public Tag getTag() {
-        return tag;
+    public List<Tag> getTags(){
+        return tags;
     }
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
 }

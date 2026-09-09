@@ -1,12 +1,15 @@
 package dev.naeveklubben.touristguideapi.controller;
 
 import dev.naeveklubben.touristguideapi.model.Attraction;
+import dev.naeveklubben.touristguideapi.model.Tag;
 import dev.naeveklubben.touristguideapi.service.AttractionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 //Marks this class as a Spring MVC controller
 //Tells Spring that this class handles HTTP requests
@@ -82,6 +85,16 @@ public class AttractionController {
         }
 
         return new ResponseEntity<>(deleted, HttpStatus.NO_CONTENT);
+    }
+
+    //Shows the tags of one attraction on an HTML page
+    //http://localhost:8080/attractions/{name}/tags
+    @GetMapping("/{name}/tags")
+    public String showAttractionTags(@PathVariable String name, Model model) {
+        List<Tag> tags = attractionService.getTags(name);
+        model.addAttribute("attractionName", name);
+        model.addAttribute("tags", tags == null ? List.of() : tags);
+        return "tags";
     }
 
 }
