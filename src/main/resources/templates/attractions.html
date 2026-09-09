@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Attraktioner</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/x-icon" href="/images/naeve.png">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" type="image/x-icon" th:href="@{/images/naeve.png}">
 </head>
 
 <body>
@@ -17,7 +17,6 @@
   <ul>
     <li><a href="/index.html">Forside</a></li>
     <li><a href="/attractions">Attraktioner</a></li>
-    <li><a href="/attractions/Nyhavn">Nyhavn</a></li>
     <li><a href="/recommendations.html">Anbefalinger</a></li>
     <li><a href="/about.html">Om Næveklubben</a></li>
     <li><a href="/contact.html">Kontakt Næveklubben</a></li>
@@ -25,8 +24,21 @@
 </nav>
 
 <main>
-  <h2>Attraktioner</h2>
-  <p>Kommer snart...</p>
+  <h2>Turistattraktioner:</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Navn</th>
+      <th>Beskrivelse</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="attraction : ${attractions}">
+      <td th:text="${attraction.name}"></td>
+      <td th:text="${attraction.description}"></td>
+    </tr>
+    </tbody>
+  </table>
 </main>
 
 <footer>

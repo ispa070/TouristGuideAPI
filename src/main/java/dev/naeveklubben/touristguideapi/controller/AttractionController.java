@@ -5,8 +5,8 @@ import dev.naeveklubben.touristguideapi.service.AttractionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 //Marks this class as a Spring MVC controller
 //Tells Spring that this class handles HTTP requests
@@ -24,12 +24,13 @@ public class AttractionController {
         this.attractionService = attractionService;
     }
 
-    //Returns all attractions
-    //http://localhost:8080/attractions
-    @GetMapping()
-    public ResponseEntity<List<Attraction>> getAttraction() {
-        List<Attraction>attractions = attractionService.getAttractions();
-        return new ResponseEntity<>(attractions, HttpStatus.OK);
+    //Shows all attractions on an HTML page
+    //Model carries the data to the template,
+    //and the returned String is the filename in templates/ without .html
+    @GetMapping
+    public String getAttractions(Model model) {
+        model.addAttribute("attractions", attractionService.getAttractions());
+        return "attractions";
     }
 
     //Finds an attraction using the name from the URL
