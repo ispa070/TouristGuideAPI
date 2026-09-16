@@ -24,10 +24,13 @@ body {
     line-height: 1.5;
 }
 
-/* Banner */
+
+/* =========================================================
+   BANNER
+   ========================================================= */
+
 header {
     height: 375px;
-    box-sizing: border-box;
     padding: 80px 24px;
 
     display: flex;
@@ -37,7 +40,7 @@ header {
     background-size: cover;
     background-position: center 70%;
 
-    color: crimson;
+    color: var(--accent-color);
     text-align: left;
     text-shadow: 3px 3px 10px dimgrey;
 }
@@ -46,31 +49,12 @@ header h1 {
     margin: 0;
     font-size: 65px;
 }
-/* Table */
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    border-top: 1px solid white;
-    padding: 8px 12px;
-    text-align: left;
-}
-
-td {
-    border: 1px solid crimson;
-    padding: 8px 12px;
-    text-align: left;
-}
-
-thead th {
-    background-color: var(--accent-color);
-    color: white;
-}
 
 
-/* Navigation */
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
 .nav-bar {
     background-color: var(--accent-color);
 }
@@ -79,6 +63,7 @@ thead th {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+
     margin: 0;
     padding: 0;
 }
@@ -90,7 +75,9 @@ thead th {
 
 .nav-bar a {
     display: block;
+
     padding: 14px 16px;
+
     color: white;
     text-align: center;
     text-decoration: none;
@@ -100,30 +87,37 @@ thead th {
     background-color: #111;
 }
 
-/* Sidens primære indhold */
+
+/* =========================================================
+   SIDENS PRIMÆRE INDHOLD
+   ========================================================= */
+
 main {
     flex: 1;
+
     width: 100%;
     max-width: 1100px;
+
     margin: 0 auto;
     padding: 32px 24px;
 }
 
-
 main h2 {
-    font-size: 30px;
-    color: crimson;
-    border-bottom: 1px solid crimson;
-    padding-bottom: 4px;
     margin: 28px 0 10px;
-}
+    padding-bottom: 4px;
 
-main h3 {
-    margin: 0 0 12px;
+    color: var(--accent-color);
+    font-size: 30px;
+
+    border-bottom: 1px solid var(--accent-color);
 }
 
 main h2:first-child {
     margin-top: 0;
+}
+
+main h3 {
+    margin: 0 0 12px;
 }
 
 main p {
@@ -131,17 +125,25 @@ main p {
 }
 
 main img {
+    display: block;
+
     max-width: 100%;
     height: auto;
-    display: block;
+
     padding-top: 15px;
     padding-bottom: 30px;
 }
+
+
+/* =========================================================
+   LISTER
+   ========================================================= */
 
 /*
  * Almindelige lister beholder deres punkttegn.
  * Reglerne gælder kun indholdet og ikke navbaren.
  */
+
 main ul {
     margin: 0 0 24px;
     padding-left: 28px;
@@ -149,6 +151,30 @@ main ul {
 
 main li {
     margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   LINKS OG KNAPPER
+   ========================================================= */
+
+/* Knap-styling til links der skal ligne knapper */
+.btn {
+    display: inline-block;
+
+    margin-top: 16px;
+    padding: 10px 18px;
+
+    background-color: var(--accent-color);
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: darkred;
 }
 
 /* Links i hovedindholdet */
@@ -160,11 +186,217 @@ main a:hover {
     color: darkred;
 }
 
-/* Omtale */
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 8px 12px;
+
+    border-top: 1px solid white;
+
+    text-align: left;
+}
+
+td {
+    padding: 8px 12px;
+
+    border: 1px solid var(--accent-color);
+
+    text-align: left;
+}
+
+thead th {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+
+/* =========================================================
+   TILFØJ ATTRAKTION - FORMULAR
+   ========================================================= */
+
+/*
+ * Alt herunder gælder kun formularer med:
+ *
+ * class="attraction-form"
+ *
+ * Derfor ændrer det ikke attractions-tabellen eller
+ * andre eksisterende sider.
+ */
+
+.attraction-form {
+    max-width: 100%;
+
+    margin-top: 24px;
+    padding: 28px;
+
+    background-color: rgba(255, 255, 255, 0.35);
+
+    border: 1px solid rgba(220, 20, 60, 0.25);
+    border-radius: 8px;
+}
+
+
+/* Labels til formularens normale felter */
+.attraction-form > label {
+    display: block;
+
+    margin-top: 18px;
+    margin-bottom: 6px;
+
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+
+/* Første label behøver ikke ekstra afstand ovenover */
+.attraction-form > label:first-child {
+    margin-top: 0;
+}
+
+
+/* Navn, beskrivelse og by */
+.attraction-form input[type="text"],
+.attraction-form textarea,
+.attraction-form select {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    background-color: white;
+    color: #222;
+
+    border: 1px solid #bbb;
+    border-radius: 4px;
+
+    font: inherit;
+}
+
+
+/* Focus når brugeren klikker i et felt */
+.attraction-form input[type="text"]:focus,
+.attraction-form textarea:focus,
+.attraction-form select:focus {
+    outline: none;
+
+    border-color: var(--accent-color);
+
+    box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.12);
+}
+
+
+/* Beskrivelsesfelt */
+.attraction-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* Dropdown */
+.attraction-form select {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.attraction-form .tag-options {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+
+/* Hvert enkelt tag */
+.attraction-form .tag-option {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 12px;
+
+    background-color: rgba(220, 20, 60, 0.08);
+
+    border: 1px solid rgba(220, 20, 60, 0.25);
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.attraction-form .tag-option:hover {
+    background-color: rgba(220, 20, 60, 0.15);
+}
+
+
+/* Checkbox */
+.attraction-form .tag-option input[type="checkbox"] {
+    margin: 0;
+
+    accent-color: var(--accent-color);
+
+    cursor: pointer;
+}
+
+
+/* Tag-label */
+.attraction-form .tag-option label {
+    margin: 0;
+
+    color: #222;
+    font-weight: normal;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SUBMIT-KNAP
+   ========================================================= */
+
+.attraction-form button[type="submit"] {
+    margin-top: 26px;
+    padding: 10px 18px;
+
+    background-color: var(--accent-color);
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.attraction-form button[type="submit"]:hover {
+    background-color: darkred;
+}
+
+
+/* =========================================================
+   OMTale
+   ========================================================= */
+
 blockquote {
     margin: 0 0 28px;
     padding: 16px 20px;
+
     background-color: rgba(220, 20, 60, 0.08);
+
     border-left: 5px solid var(--accent-color);
 }
 
@@ -176,20 +408,30 @@ blockquote cite {
     font-style: italic;
 }
 
-/* Kontaktinfo-blok */
+
+/* =========================================================
+   KONTAKTINFO
+   ========================================================= */
+
 address {
-    ;
     margin-top: 32px;
     margin-bottom: 14px;
     padding: 24px;
+
     background-color: rgba(220, 20, 60, 0.08);
+
     border-top: 2px solid var(--accent-color);
 }
 
-/* Sidefod */
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer {
     margin-top: auto;
     padding: 10px;
+
     text-align: center;
 }
 

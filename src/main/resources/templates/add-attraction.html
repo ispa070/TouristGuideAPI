@@ -1,0 +1,69 @@
+  <!DOCTYPE html>
+  <html lang="da" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tilføj attraktion</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/naeve.png}">
+  </head>
+
+  <body>
+
+  <header>
+    <h1>Næveklubbens turistguide</h1>
+  </header>
+
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="/index.html">Forside</a></li>
+      <li><a href="/attractions">Attraktioner</a></li>
+      <li><a href="/recommendations.html">Anbefalinger</a></li>
+      <li><a href="/about.html">Om Næveklubben</a></li>
+      <li><a href="/contact.html">Kontakt Næveklubben</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Tilføj attraktion</h2>
+    <form class="attraction-form" action="#" method="post" th:action="@{/attractions/add}" th:object="${attraction}">
+      <label for="name"></label>
+      <input type="text" th:field="*{name}" id="name" required placeholder="Navnet på attraktionen">
+
+      <label for="description">Tilføj beskrivelse</label>
+      <textarea th:field="*{description}" id="description" cols="25" rows="5"
+                placeholder="Tilføj en beskrivelse"></textarea>
+
+      <label for="city">Vælg by</label>
+      <select th:field="*{city}" id="city" required>
+        <option value="">-- Vælg by --</option>
+        <option th:each="city : ${city}"
+                th:value="${city}"
+                th:text="${city.getDescription}">
+        </option>
+      </select>
+
+      <label>Vælg tags</label>
+
+      <div class="tag-options" th:each="tag : ${tags}">
+        <input type="checkbox"
+               th:field="*{tags}"
+               th:value="${tag}"
+               th:id="${'tag-' + tag}">
+
+        <label th:for="${'tag-' + tag}"
+               th:text="${tag.getDescription}">
+        </label>
+      </div>
+
+      <button type="submit">Gem attraktion</button>
+
+    </form>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Næveklubben</p>
+  </footer>
+
+  </body>
+  </html>

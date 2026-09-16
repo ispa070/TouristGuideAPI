@@ -11,6 +11,8 @@ public class Attraction {
     private City city;
     private List<Tag> tags = new ArrayList<>();
 
+    public Attraction() {}
+
     //Constructor used when creating a new Attraction object
     public Attraction(String name, String description, City city, List<Tag> tags){
         this.name = name;

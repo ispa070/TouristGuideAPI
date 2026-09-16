@@ -1,6 +1,7 @@
 package dev.naeveklubben.touristguideapi.controller;
 
 import dev.naeveklubben.touristguideapi.model.Attraction;
+import dev.naeveklubben.touristguideapi.model.City;
 import dev.naeveklubben.touristguideapi.model.Tag;
 import dev.naeveklubben.touristguideapi.service.AttractionService;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class AttractionController {
     //http://localhost:8080/attractions/{name}
     @GetMapping("{name}")
     public ResponseEntity<Attraction> getAttractionByName(@PathVariable String name) {
-        Attraction attraction = attractionService.findTouristAttractionByName(name);
+        Attraction attraction = attractionService.getAttractionByName(name);
         if (attraction == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -49,29 +50,36 @@ public class AttractionController {
         }
     }
 
-    //Creates a new attraction
+    //Handler method for add attraction
     //http://localhost:8080/attractions/add
-    @PostMapping("/add")
-    public ResponseEntity<Attraction> createAttraction(@RequestBody Attraction attraction) {
-
-        //@RequestBody converts the JSON request into an Attraction object
-
-        Attraction created = attractionService.createAttraction(attraction);
-        return new ResponseEntity<>(created, HttpStatus.CREATED);
+    @GetMapping("/add")
+    public String showAttractionForm(Model model) {
+        model.addAttribute("attraction", new Attraction());
+        model.addAttribute("city", City.values());
+        model.addAttribute("tags", Tag.values());
+        return "add-attraction";
     }
 
+    //Handle the form submission
+    @PostMapping("/add")
+    public String saveAttractionForm(@ModelAttribute Attraction attraction){
+        attractionService.addAttraction(attraction);
+        return "redirect:/attractions";
+    }
 
-    //Updates an existing attraction
-    //http://localhost:8080/attractions/update/{name}
-    @PutMapping("/update/{name}")
-    public ResponseEntity<Attraction> updateAttraction(@PathVariable String name, @RequestBody Attraction attraction) {
-        Attraction updated = attractionService.updateAttraction(name, attraction);
+    @GetMapping("/{name}/edit")
+    public String showUpdateForm(@PathVariable String name, Model model) {
+        Attraction attraction = attractionService.getAttractionByName(name);
+        model.addAttribute("attraction", attraction);
+        model.addAttribute("cities", City.values());
+        model.addAttribute("tags", Tag.values());
+        return "update-attraction";
+    }
 
-        if (updated == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(updated, HttpStatus.OK);
+    @PostMapping("/{name}/edit")
+    public String updateAttraction(@PathVariable String name, @ModelAttribute Attraction attraction) {
+        attractionService.updateAttraction(name, attraction);
+        return "redirect:/attractions";
     }
 
     //Deletes an attraction

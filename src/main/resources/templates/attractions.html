@@ -32,6 +32,9 @@
       <th>Beskrivelse</th>
       <th>By</th>
       <th>Tags</th>
+      <th>Redigér</th>
+      <th>Slet</th>
+
     </tr>
     </thead>
     <tbody>
@@ -44,11 +47,16 @@
           <button type="submit">Tags</button>
         </form>
       </td>
+      <td>
+        <form th:action="@{/attractions/{name}/edit(name=${attraction.name})}" method="get">
+          <button type="submit">Redigér</button>
+        </form>
+      </td>
     </tr>
     </tbody>
   </table>
 
-  <button>Tilføj Attraktion</button>
+  <a class="btn" th:href="@{/attractions/add}">Tilføj Attraktion</a>
 
 </main>
 

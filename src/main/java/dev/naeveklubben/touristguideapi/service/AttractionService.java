@@ -24,19 +24,18 @@ public class AttractionService {
     }
 
     //Gets one attraction by name
-    public Attraction findTouristAttractionByName(String name) {
+    public Attraction getAttractionByName(String name) {
         return repository.findAttractionByName(name);
     }
 
     //Sends a new attraction to the repository
-    public Attraction createAttraction(Attraction attraction) {
+    public Attraction addAttraction(Attraction attraction) {
         repository.addAttraction(attraction);
         return attraction;
     }
 
-    //Updates an existing attraction
-    public Attraction updateAttraction(String name, Attraction attraction){
-        return repository.updateAttraction(name, attraction);
+    public void updateAttraction(String name, Attraction updatedAttraction) {
+        repository.updateAttraction(name, updatedAttraction);
     }
 
     //Deletes an attraction

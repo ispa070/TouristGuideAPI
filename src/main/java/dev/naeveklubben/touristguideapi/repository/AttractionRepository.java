@@ -44,19 +44,13 @@ public class AttractionRepository {
         attractions.add(attraction);
     }
 
-    //Finds and updates an already existing attraction, found by name
-    public Attraction updateAttraction(String name, Attraction updated){
-        Attraction existing = findAttractionByName(name);
-
-        //If the attraction does not exist, nothing can be updated
-        if (existing == null) {
-            return null;
+    public void updateAttraction(String name, Attraction updatedAttraction) {
+        Attraction existingAttraction = findAttractionByName(name);
+        if (existingAttraction != null) {
+            existingAttraction.setDescription(updatedAttraction.getDescription());
+            existingAttraction.setCity(updatedAttraction.getCity());
+            existingAttraction.setTags(updatedAttraction.getTags());
         }
-
-        existing.setName(updated.getName());
-        existing.setDescription(updated.getDescription());
-
-        return existing;
     }
 
     //Finds and removes an attraction, found by name
