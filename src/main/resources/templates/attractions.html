@@ -52,6 +52,11 @@
           <button type="submit">Redigér</button>
         </form>
       </td>
+      <td>
+        <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" method="get">
+          <button type="submit">Slet</button>
+        </form>
+      </td>
     </tr>
     </tbody>
   </table>

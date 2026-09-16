@@ -2,7 +2,7 @@
 <html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Tags</title>
+  <title>Slet attraktion</title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="icon" type="image/x-icon" th:href="@{/images/naeve.png}">
 </head>
@@ -24,23 +24,40 @@
 </nav>
 
 <main>
-  <h2>Tags for <span th:text="${attractionName}"></span></h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Tags</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="tag : ${tags}">
-      <td th:text="${tag.description}"></td>
-    </tr>
-    </tbody>
 
-  </table>
+  <section class="delete-confirmation">
 
-  <a class="btn" th:href="@{/attractions}">Gå tilbage</a>
+    <h2>Bekræft sletning</h2>
 
+    <p>
+      Vil du fjerne
+      <strong th:text="${attraction.name}"></strong>
+      permanent?
+    </p>
+
+    <p class="delete-warning">
+      OBS! Dette kan ikke fortrydes.
+    </p>
+
+    <div class="delete-actions">
+
+      <form method="post"
+            th:action="@{/attractions/{name}/delete(name=${attraction.name})}">
+
+        <button class="btn-delete" type="submit">
+          Ja
+        </button>
+
+      </form>
+
+      <a class="btn-cancel"
+         th:href="@{/attractions}">
+        Nej, gå tilbage
+      </a>
+
+    </div>
+
+  </section>
 
 </main>
 

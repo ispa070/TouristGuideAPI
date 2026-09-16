@@ -60,13 +60,15 @@ public class AttractionController {
         return "add-attraction";
     }
 
-    //Handle the form submission
+    //Handle the add form submission
     @PostMapping("/add")
     public String saveAttractionForm(@ModelAttribute Attraction attraction){
         attractionService.addAttraction(attraction);
         return "redirect:/attractions";
     }
 
+    //Handler method for update attraction
+    //http://localhost:8080/attractions/{name}/edit 
     @GetMapping("/{name}/edit")
     public String showUpdateForm(@PathVariable String name, Model model) {
         Attraction attraction = attractionService.getAttractionByName(name);
@@ -76,6 +78,7 @@ public class AttractionController {
         return "update-attraction";
     }
 
+    //Handle the update form submission
     @PostMapping("/{name}/edit")
     public String updateAttraction(@PathVariable String name, @ModelAttribute Attraction attraction) {
         attractionService.updateAttraction(name, attraction);
@@ -84,15 +87,18 @@ public class AttractionController {
 
     //Deletes an attraction
     //http://localhost:8080/attractions/delete/{name}
-    @DeleteMapping("/delete/{name}")
-    public ResponseEntity<Attraction> deleteAttraction(@PathVariable String name) {
-        Attraction deleted = attractionService.deleteAttraction(name);
+    @GetMapping("/{name}/delete")
+    public String showDeleteConfirmation(@PathVariable String name, Model model) {
+        Attraction attraction = attractionService.getAttractionByName(name);
+        model.addAttribute("attraction", attraction);
+        return "delete-attraction";
+    }
 
-        if (deleted == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @PostMapping("/{name}/delete")
+    public String deleteAttraction(@PathVariable String name) {
+        attractionService.deleteAttraction(name);
 
-        return new ResponseEntity<>(deleted, HttpStatus.NO_CONTENT);
+        return "redirect:/attractions";
     }
 
     //Shows the tags of one attraction on an HTML page

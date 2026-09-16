@@ -304,6 +304,91 @@ thead th {
     cursor: pointer;
 }
 
+/* =========================================================
+   SLET ATTRAKTION - BEKRÆFTELSE
+   ========================================================= */
+
+/* Delete confirmation page */
+
+.delete-confirmation {
+    max-width: 680px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.delete-confirmation h2 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 8px;
+}
+
+.delete-warning {
+    font-style: italic;
+    margin: 20px 0;
+}
+
+/* Container til knapperne */
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+/* Undgå ekstra margin fra form */
+.delete-actions form {
+    margin: 0;
+}
+
+/* Fælles styling */
+.btn-delete,
+.btn-cancel {
+    display: inline-block;
+    min-width: 130px;
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+            background-color 0.2s ease,
+            transform 0.1s ease;
+}
+
+/* Ja, slet */
+.btn-delete {
+    background-color: #b3261e;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #8f1f19;
+}
+
+/* Nej, gå tilbage */
+.btn-cancel {
+    background-color: #3f7d44;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #326437;
+}
+
+.btn-delete:active,
+.btn-cancel:active {
+    transform: translateY(1px);
+}
 
 /* =========================================================
    TAGS
