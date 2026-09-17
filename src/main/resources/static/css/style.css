@@ -100,6 +100,7 @@ main {
 
     margin: 0 auto;
     padding: 32px 24px;
+    cursor: url("/images/boxing.png") 4 4, pointer;
 }
 
 main h2 {
@@ -184,6 +185,11 @@ main a {
 
 main a:hover {
     color: darkred;
+}
+
+.recommendation-link {
+    margin-top: 40px;
+    display: block;
 }
 
 
@@ -531,3 +537,4 @@ footer a {
 footer a:hover {
     color: darkred;
 }
+
