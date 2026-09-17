@@ -16,6 +16,7 @@ import java.util.List;
 //Tells Spring that this class handles HTTP requests
 @Controller
 
+
 //Sets the base URL for all endpoints in this controller
 //All mappings in this class will start with "/attractions"
 @RequestMapping("/attractions")
@@ -47,6 +48,7 @@ public class AttractionController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(attraction, HttpStatus.OK);
+
         }
     }
 
