@@ -20,6 +20,18 @@ public class AttractionRepository {
                 List.of(Tag.GRATIS)));
         attractions.add(new Attraction("Tivoli", "Forlystelsespark midt i København centrum", City.KØBENHAVN,
                 List.of(Tag.FORLYSTELSESPARK)));
+        attractions.add(new Attraction("Glyptoteket", "Museum med antik kunst og værker", City.KØBENHAVN,
+                List.of(Tag.MUSEUM)));
+        attractions.add(new Attraction("Gavlen", "Hyggelig bar på Nørrebro med billig øl", City.KØBENHAVN,
+                List.of(Tag.RESTAURANT)));
+        attractions.add(new Attraction("Christiania", "Et selvstyrende område, som især er kendt for sit alternative miljø, kreative fællesskab og anderledes livsstil", City.KØBENHAVN,
+                List.of(Tag.GRATIS, Tag.NATUR)));
+        attractions.add(new Attraction("Nyhavn", "En ikonisk havnefront og kanal i København, der er berømt for sine farvestrålende huse, udendørs caféer og historiske træskibe", City.KØBENHAVN,
+                List.of(Tag.GRATIS, Tag.RESTAURANT)));
+        attractions.add(new Attraction("ARoS", "Et af Nordeuropas største og mest ikoniske kunstmuseer, der har over 8.000 værker, der dækker perioden fra den danske guldalder og modernisme til international nutidskunst", City.KØBENHAVN,
+                List.of(Tag.MUSEUM)));
+        attractions.add(new Attraction("H.C. Andersens Hus", "et internationalt anerkendt museum dedicated til eventyrforfatteren Hans Christian Andersen.", City.ODENSE,
+                List.of(Tag.MUSEUM, Tag.BØRNEVENLIG)));
     }
 
     //Returns all attractions
