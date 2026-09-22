@@ -29,9 +29,8 @@ public class AttractionService {
     }
 
     //Sends a new attraction to the repository
-    public Attraction addAttraction(Attraction attraction) {
+    public void addAttraction(Attraction attraction) {
         repository.addAttraction(attraction);
-        return attraction;
     }
 
     public void updateAttraction(String name, Attraction updatedAttraction) {
@@ -39,8 +38,8 @@ public class AttractionService {
     }
 
     //Deletes an attraction
-    public Attraction deleteAttraction(String name){
-        return repository.deleteAttraction(name);
+    public void deleteAttraction(String name){
+        repository.deleteAttraction(name);
     }
 
     //Gets the tags of one attraction, found by name
