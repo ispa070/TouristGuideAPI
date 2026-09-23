@@ -13,15 +13,7 @@
   <h1>Næveklubbens turistguide</h1>
 </header>
 
-<nav class="nav-bar">
-  <ul>
-    <li><a href="/index.html">Forside</a></li>
-    <li><a href="/attractions">Attraktioner</a></li>
-    <li><a href="/recommendations.html">Anbefalinger</a></li>
-    <li><a href="/about.html">Om Næveklubben</a></li>
-    <li><a href="/contact.html">Kontakt Næveklubben</a></li>
-  </ul>
-</nav>
+<div th:replace="~{fragments :: navbar}"></div>
 
 <main>
   <h2>Tags for <span th:text="${attractionName}"></span></h2>
