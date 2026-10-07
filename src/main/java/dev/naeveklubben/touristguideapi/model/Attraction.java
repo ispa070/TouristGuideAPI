@@ -6,19 +6,28 @@ import java.util.List;
 public class Attraction {
 
     //Stores the name and description of an attraction
+    private int id;
     private String name;
     private String description;
-    private City city;
+    private List<City> city = new ArrayList<>();
     private List<Tag> tags = new ArrayList<>();
 
     public Attraction() {}
 
     //Constructor used when creating a new Attraction object
-    public Attraction(String name, String description, City city, List<Tag> tags){
+    public Attraction(int id, String name, String description, List<City> city, List<Tag> tags){
+        this.id = id;
         this.name = name;
         this.description = description;
         this.city = city;
         this.tags = tags;
+    }
+
+    //Constructor used when reading an attraction from the database without city and tags
+    public Attraction(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     //Getters to return values of the fields
@@ -39,11 +48,11 @@ public class Attraction {
         this.description = description;
     }
 
-    public City getCity() {
+    public List<City> getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(List<City> city) {
         this.city = city;
     }
 

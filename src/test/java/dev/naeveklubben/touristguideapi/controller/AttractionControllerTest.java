@@ -51,7 +51,7 @@ class AttractionControllerTest {
                         ));
 
         //Defines what the mocked service should return
-        when(attractionService.getAttractions())
+        when(attractionService.findAllAttractions())
                 .thenReturn(attractions);
 
         mockMvc.perform(get("/attractions"))
@@ -60,7 +60,7 @@ class AttractionControllerTest {
                 .andExpect(model().attribute("attractions", attractions));
 
         //Verifies that the controller called the service
-        verify(attractionService).getAttractions();
+        verify(attractionService).findAllAttractions();
     }
 
     //Tests that an attraction can be found using its name as a path variable

@@ -34,10 +34,11 @@ public class AttractionController {
     //and the returned String is the filename in templates/ without .html
     @GetMapping
     public String getAttractions(Model model) {
-        model.addAttribute("attractions", attractionService.getAttractions());
+        List<Attraction> attractions = attractionService.findAllAttractions();
+        model.addAttribute("attractions", attractions);
         return "attractions";
     }
-
+/*
     //....
     //Finds an attraction using the name from the URL
     //http://localhost:8080/attractions/{name}
@@ -112,5 +113,7 @@ public class AttractionController {
         model.addAttribute("tags", tags == null ? List.of() : tags);
         return "tags";
     }
+
+ */
 
 }

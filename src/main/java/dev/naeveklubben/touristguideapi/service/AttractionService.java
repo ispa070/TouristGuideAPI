@@ -19,10 +19,10 @@ public class AttractionService {
     }
 
     //Gets all attractions from the repository
-    public List<Attraction> getAttractions() {
-        return repository.getAllAttractions();
+    public List<Attraction> findAllAttractions() {
+        return repository.findAll();
     }
-
+/*
     //Gets one attraction by name
     public Attraction getAttractionByName(String name) {
         return repository.findAttractionByName(name);
@@ -47,5 +47,5 @@ public class AttractionService {
         Attraction attraction = repository.findAttractionByName(name);
         return attraction == null ? null : attraction.getTags();
     }
-
+*/
 }

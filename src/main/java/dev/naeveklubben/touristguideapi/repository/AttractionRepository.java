@@ -3,36 +3,45 @@ package dev.naeveklubben.touristguideapi.repository;
 import dev.naeveklubben.touristguideapi.model.Attraction;
 import dev.naeveklubben.touristguideapi.model.City;
 import dev.naeveklubben.touristguideapi.model.Tag;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class AttractionRepository {
-    //The attractions are stored in an ArrayList
-    private final List<Attraction> attractions = new ArrayList<>();
 
-    public AttractionRepository() {
-        //Starting data when the repository is created
-        attractions.add(new Attraction("Den Lille Havfrue", "Røvsyg og mega lille, spild af tid", City.KØBENHAVN,
-                List.of(Tag.GRATIS)));
-        attractions.add(new Attraction("Tivoli", "Forlystelsespark midt i København centrum", City.KØBENHAVN,
-                List.of(Tag.FORLYSTELSESPARK)));
-        attractions.add(new Attraction("Glyptoteket", "Museum med antik kunst og værker", City.KØBENHAVN,
-                List.of(Tag.MUSEUM)));
-        attractions.add(new Attraction("Gavlen", "Hyggelig bar på Nørrebro med billig øl", City.KØBENHAVN,
-                List.of(Tag.RESTAURANT)));
-        attractions.add(new Attraction("Christiania", "Et selvstyrende område, som især er kendt for sit alternative miljø, kreative fællesskab og anderledes livsstil", City.KØBENHAVN,
-                List.of(Tag.GRATIS, Tag.NATUR)));
-        attractions.add(new Attraction("Nyhavn", "En ikonisk havnefront og kanal i København, der er berømt for sine farvestrålende huse, udendørs caféer og historiske træskibe", City.KØBENHAVN,
-                List.of(Tag.GRATIS, Tag.RESTAURANT)));
-        attractions.add(new Attraction("ARoS", "Et af Nordeuropas største og mest ikoniske kunstmuseer, der har over 8.000 værker, der dækker perioden fra den danske guldalder og modernisme til international nutidskunst", City.KØBENHAVN,
-                List.of(Tag.MUSEUM)));
-        attractions.add(new Attraction("H.C. Andersens Hus", "et internationalt anerkendt museum dedicated til eventyrforfatteren Hans Christian Andersen.", City.ODENSE,
-                List.of(Tag.MUSEUM, Tag.BØRNEVENLIG)));
+    //The attractions are stored in an ArrayList
+    private final JdbcTemplate jdbcTemplate;
+
+    public AttractionRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
+    //Finds all the attractions through the attraction table
+    public List<Attraction> findAll() {
+        String sql = "SELECT id, name, description FROM attraction";
+        return jdbcTemplate.query(sql, (rs, rowNum) ->
+                new Attraction(rs.getInt("id"), rs.getString("name"), rs.getString("description"))
+        );
+    }
+
+    //Finds the cities of one attraction through the attraction_city table
+    private List<City> findCitiesByAttractionId(int attractionId) {
+        String sql = "SELECT c.city FROM city c " +
+                "JOIN attraction_city ac ON ac.city_id = c.id " +
+                "WHERE ac.attraction_id = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> City.fromDescription(rs.getString("city")), attractionId);
+    }
+
+    //Finds the tags of one attraction through the attraction_tag table
+    private List<Tag> findTagsByAttractionId(int attractionId) {
+        String sql = "SELECT t.tag FROM tag t " +
+                "JOIN attraction_tag at ON at.tag_id = t.id " +
+                "WHERE at.attraction_id = ?";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> Tag.fromDescription(rs.getString("tag")), attractionId);
+    }
+
+/*
     //Returns all attractions
     public List<Attraction> getAllAttractions() {
         return attractions;
@@ -76,7 +85,7 @@ public class AttractionRepository {
 
         return attraction;
     }
-
+*/
     //public Tag showTag(String name) {
 
 

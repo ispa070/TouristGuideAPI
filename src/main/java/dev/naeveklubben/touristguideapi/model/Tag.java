@@ -2,6 +2,7 @@ package dev.naeveklubben.touristguideapi.model;
 
 public enum Tag {
     BØRNEVENLIG("Børnevenlig"),
+    ENTRÉ("Entré"),
     FORLYSTELSESPARK("Forlystelsespark"),
     GRATIS("Gratis"),
     MUSEUM("Museum"),
@@ -17,4 +18,15 @@ public enum Tag {
     public String getDescription() {
         return description;
     }
+
+    //Finds the Tag that matches the text from the database
+    public static Tag fromDescription(String description) {
+        for (Tag tag : values()) {
+            if (tag.description.equals(description)) {
+                return tag;
+            }
+        }
+        throw new IllegalArgumentException("Ukendt by: " + description);
+    }
+
 }
