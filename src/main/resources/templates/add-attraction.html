@@ -17,8 +17,9 @@
 
   <main>
     <h2>Tilføj attraktion</h2>
+    <p class="delete-warning" th:if="${error}" th:text="${error}"></p>
     <form class="attraction-form" action="#" method="post" th:action="@{/attractions/add}" th:object="${attraction}">
-      <label for="name"></label>
+      <label for="name">Navn</label>
       <input type="text" th:field="*{name}" id="name" required placeholder="Navnet på attraktionen">
 
       <label for="description">Tilføj beskrivelse</label>
@@ -28,11 +29,14 @@
       <label for="city">Vælg by</label>
       <select th:field="*{city}" id="city" required>
         <option value="">-- Vælg by --</option>
-        <option th:each="city : ${city}"
-                th:value="${city}"
-                th:text="${city.getDescription}">
+        <option th:each="c : ${cities}"
+                th:value="${c}"
+                th:text="${c.description}">
         </option>
       </select>
+
+      <label for="address">Adresse</label>
+      <input type="text" th:field="*{address}" id="address" required placeholder="Fx Vesterbrogade 3, 1630 København V">
 
       <label>Vælg tags</label>
 

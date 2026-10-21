@@ -31,16 +31,18 @@
         <textarea th:field="*{description}"
                   id="description"
                   cols="25"
-                  rows="5">
-    </textarea>
+                  rows="5"></textarea>
 
         <label for="city">Vælg by</label>
         <select th:field="*{city}" id="city" required>
-            <option th:each="city : ${cities}"
-                    th:value="${city}"
-                    th:text="${city.getDescription}">
+            <option th:each="c : ${cities}"
+                    th:value="${c}"
+                    th:text="${c.description}">
             </option>
         </select>
+
+        <label for="address">Adresse</label>
+        <input type="text" th:field="*{address}" id="address" required>
 
         <label>Vælg tags</label>
 

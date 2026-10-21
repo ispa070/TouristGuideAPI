@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -41,17 +42,19 @@ class AttractionControllerTest {
                 (new Attraction(
                                 "Tivoli",
                                 "Sjovt sted og flot til Halloween",
-                                City.KØBENHAVN,
+                                "Vesterbrogade 3, 1630 København V",
+                                List.of(City.KØBENHAVN),
                                 List.of(Tag.FORLYSTELSESPARK, Tag.BØRNEVENLIG)),
                         new Attraction(
                                 "Aros",
                                 "Kunstmuseum",
-                                City.AARHUS,
+                                "Aros Allé 2, 8000 Aarhus C",
+                                List.of(City.AARHUS),
                                 List.of(Tag.MUSEUM)
                         ));
 
         //Defines what the mocked service should return
-        when(attractionService.getAttractions())
+        when(attractionService.findAllAttractions())
                 .thenReturn(attractions);
 
         mockMvc.perform(get("/attractions"))
@@ -60,7 +63,7 @@ class AttractionControllerTest {
                 .andExpect(model().attribute("attractions", attractions));
 
         //Verifies that the controller called the service
-        verify(attractionService).getAttractions();
+        verify(attractionService).findAllAttractions();
     }
 
     //Tests that an attraction can be found using its name as a path variable
@@ -70,7 +73,8 @@ class AttractionControllerTest {
         Attraction attraction = new Attraction(
                 "Tivoli",
                 "Sjovt sted og flot til Halloween",
-                City.KØBENHAVN,
+                "Vesterbrogade 3, 1630 København V",
+                List.of(City.KØBENHAVN),
                 List.of(Tag.FORLYSTELSESPARK, Tag.BØRNEVENLIG));
 
         when(attractionService.getAttractionByName("Tivoli"))
@@ -101,6 +105,7 @@ class AttractionControllerTest {
         mockMvc.perform(post("/attractions/add")
                         .param("name", "Tivoli")
                         .param("description", "Sjovt sted og flot til Halloween")
+                        .param("address", "Vesterbrogade 3, 1630 København V")
                         .param("city", "KØBENHAVN")
                         .param("tags", "FORLYSTELSESPARK"))
                 .andExpect(status().is3xxRedirection())
@@ -114,9 +119,13 @@ class AttractionControllerTest {
     @Test
     void shouldUpdateAttraction() throws Exception {
 
+        when(attractionService.updateAttraction(eq("Tivoli"), any(Attraction.class)))
+                .thenReturn(true);
+
         mockMvc.perform(post("/attractions/Tivoli/edit")
                         .param("name", "Tivoli")
                         .param("description", "Opdateret Tivoli description her")
+                        .param("address", "Vesterbrogade 3, 1630 København V")
                         .param("city", "KØBENHAVN")
                         .param("tags", "BØRNEVENLIG"))
                 .andExpect(status().is3xxRedirection())
@@ -135,5 +144,58 @@ class AttractionControllerTest {
                 .andExpect(redirectedUrl("/attractions"));
 
         verify(attractionService).deleteAttraction("Tivoli");
+    }
+
+    //Tests that the add form is shown again with an error when the name is already taken
+    @Test
+    void shouldNotAddDuplicateAttraction() throws Exception {
+        when(attractionService.attractionExists("Tivoli")).thenReturn(true);
+
+        mockMvc.perform(post("/attractions/add")
+                        .param("name", "Tivoli")
+                        .param("address", "Vesterbrogade 3, 1630 København V")
+                        .param("city", "KØBENHAVN"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("add-attraction"))
+                .andExpect(model().attributeExists("error"));
+
+        verify(attractionService, never()).addAttraction(any(Attraction.class));
+    }
+
+    //Tests that the edit form is filled with the attraction from the service
+    @Test
+    void shouldShowUpdateForm() throws Exception {
+        Attraction attraction = new Attraction(
+                "Tivoli",
+                "Sjovt sted",
+                "Vesterbrogade 3, 1630 København V",
+                List.of(City.KØBENHAVN),
+                List.of(Tag.FORLYSTELSESPARK));
+        when(attractionService.getAttractionByName("Tivoli")).thenReturn(attraction);
+
+        mockMvc.perform(get("/attractions/Tivoli/edit"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("update-attraction"))
+                .andExpect(model().attribute("attraction", attraction));
+    }
+
+    //Tests that editing an attraction that doesn't exist gives 404
+    @Test
+    void shouldReturnNotFoundWhenUpdatingUnknown() throws Exception {
+        when(attractionService.updateAttraction(eq("Unknown"), any(Attraction.class)))
+                .thenReturn(false);
+
+        mockMvc.perform(post("/attractions/Unknown/edit")
+                        .param("description", "x"))
+                .andExpect(status().isNotFound());
+    }
+
+    //Tests that the delete confirmation page gives 404 for an unknown attraction
+    @Test
+    void shouldReturnNotFoundOnDeleteConfirmationForUnknown() throws Exception {
+        when(attractionService.getAttractionByName("Unknown")).thenReturn(null);
+
+        mockMvc.perform(get("/attractions/Unknown/delete"))
+                .andExpect(status().isNotFound());
     }
 }

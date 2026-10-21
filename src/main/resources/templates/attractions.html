@@ -23,6 +23,7 @@
       <th>Navn</th>
       <th>Beskrivelse</th>
       <th>By</th>
+      <th>Adresse</th>
       <th>Tags</th>
       <th>Redigér</th>
       <th>Slet</th>
@@ -33,7 +34,12 @@
     <tr th:each="attraction : ${attractions}">
       <td th:text="${attraction.name}"></td>
       <td th:text="${attraction.description}"></td>
-      <td th:text="${attraction.city.description}"></td>
+      <td>
+      <span th:each="c, stat : ${attraction.city}"
+            th:text="${c.description} + ${stat.last ? '' : ', '}"></span>
+      </td>
+      <td th:text="${attraction.address}"></td>
+
       <td>
         <form th:action="@{/attractions/{name}/tags(name=${attraction.name})}" method="get">
           <button type="submit">Tags</button>
