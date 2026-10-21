@@ -1,14 +1,26 @@
-### Get all attractions
+### Get all attractions (HTML page)
 GET http://localhost:8080/attractions
 
-### Get one attraction by name
+### Get one attraction by name (JSON)
 GET http://localhost:8080/attractions/Tivoli
 
-### Add an attraction
-POST http://localhost:8080/attractions/add
-Content-Type: application/json
+### Get one attraction that does not exist (404)
+GET http://localhost:8080/attractions/Findes%20ikke
 
-{
-  "name": "Rundetaarn",
-  "description": "Historisk observatorietårn i hjertet af København"
-}
+### Add an attraction (form data, like the HTML form sends it)
+POST http://localhost:8080/attractions/add
+Content-Type: application/x-www-form-urlencoded
+
+name=Rundetaarn&description=Historisk observatorietårn i hjertet af København&address=Købmagergade 52A, 1150 København K&city=KØBENHAVN&tags=ENTRÉ&tags=BØRNEVENLIG
+
+### Update an attraction
+POST http://localhost:8080/attractions/Rundetaarn/edit
+Content-Type: application/x-www-form-urlencoded
+
+description=Opdateret beskrivelse&address=Købmagergade 52A, 1150 København K&city=KØBENHAVN&tags=MUSEUM
+
+### Show the tags of an attraction
+GET http://localhost:8080/attractions/Rundetaarn/tags
+
+### Delete an attraction
+POST http://localhost:8080/attractions/Rundetaarn/delete

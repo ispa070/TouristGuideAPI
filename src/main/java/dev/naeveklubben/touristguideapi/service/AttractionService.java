@@ -4,6 +4,7 @@ import dev.naeveklubben.touristguideapi.model.Attraction;
 import dev.naeveklubben.touristguideapi.model.Tag;
 import dev.naeveklubben.touristguideapi.repository.AttractionRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,38 +24,40 @@ public class AttractionService {
         return repository.findAll();
     }
 
-/*
     //Gets one attraction by name
     public Attraction getAttractionByName(String name) {
         return repository.findAttractionByName(name);
     }
-*/
 
-/*
+    //Checks if an attraction name is already taken
+    public boolean attractionExists(String name) {
+        return repository.existsByName(name);
+    }
+
     //Sends a new attraction to the repository
-    public void addAttraction(Attraction attraction) {
-        repository.addAttraction(attraction);
+    //@Transactional: the attraction, its cities and its tags are saved together,
+    //so if one of the SQL statements fails, nothing is saved
+    @Transactional
+    public Attraction addAttraction(Attraction attraction) {
+        return repository.addAttraction(attraction);
     }
-*/
 
-/*
-    public void updateAttraction(String name, Attraction updatedAttraction) {
-        repository.updateAttraction(name, updatedAttraction);
+    //Updates an attraction (all or nothing, like addAttraction)
+    @Transactional
+    public boolean updateAttraction(String name, Attraction updatedAttraction) {
+        return repository.updateAttraction(name, updatedAttraction);
     }
-*/
 
-/*
     //Deletes an attraction
-    public void deleteAttraction(String name){
-        repository.deleteAttraction(name);
+    @Transactional
+    public Attraction deleteAttraction(String name) {
+        return repository.deleteAttraction(name);
     }
-*/
 
-/*
     //Gets the tags of one attraction, found by name
+    //Returns null if the attraction does not exist
     public List<Tag> getTags(String name) {
         Attraction attraction = repository.findAttractionByName(name);
         return attraction == null ? null : attraction.getTags();
     }
-*/
 }

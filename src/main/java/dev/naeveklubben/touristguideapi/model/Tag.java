@@ -26,7 +26,7 @@ public enum Tag {
                 return tag;
             }
         }
-        throw new IllegalArgumentException("Ukendt by: " + description);
+        throw new IllegalArgumentException("Ukendt tag: " + description);
     }
 
 }
