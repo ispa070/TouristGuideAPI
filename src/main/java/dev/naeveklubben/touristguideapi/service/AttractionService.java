@@ -22,26 +22,35 @@ public class AttractionService {
     public List<Attraction> findAllAttractions() {
         return repository.findAll();
     }
+
 /*
     //Gets one attraction by name
     public Attraction getAttractionByName(String name) {
         return repository.findAttractionByName(name);
     }
+*/
 
+/*
     //Sends a new attraction to the repository
     public void addAttraction(Attraction attraction) {
         repository.addAttraction(attraction);
     }
+*/
 
+/*
     public void updateAttraction(String name, Attraction updatedAttraction) {
         repository.updateAttraction(name, updatedAttraction);
     }
+*/
 
+/*
     //Deletes an attraction
     public void deleteAttraction(String name){
         repository.deleteAttraction(name);
     }
+*/
 
+/*
     //Gets the tags of one attraction, found by name
     public List<Tag> getTags(String name) {
         Attraction attraction = repository.findAttractionByName(name);

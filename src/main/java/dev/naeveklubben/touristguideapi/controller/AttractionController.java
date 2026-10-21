@@ -52,7 +52,9 @@ public class AttractionController {
 
         }
     }
+*/
 
+/*
     //Handler method for add attraction
     //http://localhost:8080/attractions/add
     @GetMapping("/add")
@@ -69,7 +71,9 @@ public class AttractionController {
         attractionService.addAttraction(attraction);
         return "redirect:/attractions";
     }
+*/
 
+/*
     //Handler method for update attraction
     //http://localhost:8080/attractions/{name}/edit 
     @GetMapping("/{name}/edit")
@@ -87,7 +91,9 @@ public class AttractionController {
         attractionService.updateAttraction(name, attraction);
         return "redirect:/attractions";
     }
+*/
 
+/*
     //Deletes an attraction
     //http://localhost:8080/attractions/delete/{name}
     @GetMapping("/{name}/delete")
@@ -103,7 +109,9 @@ public class AttractionController {
 
         return "redirect:/attractions";
     }
+*/
 
+/*
     //Shows the tags of one attraction on an HTML page
     //http://localhost:8080/attractions/{name}/tags
     @GetMapping("/{name}/tags")

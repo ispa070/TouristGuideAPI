@@ -46,7 +46,9 @@ public class AttractionRepository {
     public List<Attraction> getAllAttractions() {
         return attractions;
     }
+*/
 
+/*
     //Searches for an attraction by name
     public Attraction findAttractionByName(String name) {
         for (Attraction attraction : attractions) {
@@ -58,12 +60,16 @@ public class AttractionRepository {
         //Returns null if no attraction was found
         return null;
     }
+*/
 
+/*
     //Adds a new attraction to the list
     public void addAttraction(Attraction attraction) {
         attractions.add(attraction);
     }
+*/
 
+/*
     public void updateAttraction(String name, Attraction updatedAttraction) {
         Attraction existingAttraction = findAttractionByName(name);
         if (existingAttraction != null) {
@@ -72,7 +78,9 @@ public class AttractionRepository {
             existingAttraction.setTags(updatedAttraction.getTags());
         }
     }
+*/
 
+/*
     //Finds and removes an attraction, found by name
     public Attraction deleteAttraction(String name) {
         Attraction attraction = findAttractionByName(name);
